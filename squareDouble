@@ -1,0 +1,40 @@
+package main
+
+import (
+	"fmt"
+)
+
+// Define a type for the filter function
+type Filter func(int) int
+
+// Pipeline function that connects filters
+func Pipeline(numbers []int, filters ...Filter) []int {
+	for _, filter := range filters {
+		for i, number := range numbers {
+			numbers[i] = filter(number)
+		}
+	}
+	return numbers
+}
+
+// Square filter
+func Square(n int) int {
+	return n * n
+}
+
+// Double filter
+func Double(n int) int {
+	return n * 2
+}
+
+func main() {
+	// Sample data
+	numbers := []int{1, 2, 3, 4, 5}
+
+	// Process the numbers through the pipeline
+	Pipeline(numbers, Square, Double)
+
+	// Print the result
+	fmt.Println(numbers)
+
+}
