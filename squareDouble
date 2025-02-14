@@ -5,6 +5,7 @@ import (
 )
 
 // Define a type for the filter function
+// Filter type - callable
 type Filter func(int) int
 
 // Pipeline function that connects filters
